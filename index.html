@@ -10,13 +10,23 @@
   <div class="container">
     <h1>🔐 Password Generator</h1>
     <div class="options">
-      <label>Password length:
+      <label>
+        Password length:
         <input type="number" id="length" min="4" max="32" value="12" />
       </label>
       <label><input type="checkbox" id="uppercase" checked /> Include Uppercase</label>
       <label><input type="checkbox" id="lowercase" checked /> Include Lowercase</label>
       <label><input type="checkbox" id="numbers" checked /> Include Numbers</label>
       <label><input type="checkbox" id="symbols" /> Include Symbols</label>
+      <label>
+        Custom string:
+        <input type="text" id="customStr" placeholder="Nhập chữ muốn chèn" />
+      </label>
+      <label>
+        Insert position:
+        <input type="number" id="customPos" min="0" value="0" />
+        (0 = đầu, length = cuối)
+      </label>
     </div>
     <button id="generate">Generate Password</button>
     <div class="output">
