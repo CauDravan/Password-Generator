@@ -19,6 +19,12 @@ function generatePassword(length, useUpper, useLower, useNumbers, useSymbols) {
   return password;
 }
 
+function insertCustom(str, custom, pos) {
+  if (!custom) return str;
+  const p = Math.max(0, Math.min(pos, str.length));
+  return str.slice(0, p) + custom + str.slice(p);
+}
+
 function evaluateStrength(password) {
   let score = 0;
   if (password.length >= 12) score++;
@@ -38,10 +44,16 @@ document.getElementById('generate').addEventListener('click', () => {
   const lower = document.getElementById('lowercase').checked;
   const numbers = document.getElementById('numbers').checked;
   const symbols = document.getElementById('symbols').checked;
+  const customStr = document.getElementById('customStr').value;
+  const customPos = parseInt(document.getElementById('customPos').value);
 
-  const password = generatePassword(length, upper, lower, numbers, symbols);
-  document.getElementById('password').value = password;
-  document.getElementById('strength-text').textContent = evaluateStrength(password);
+  // Generate base password length minus customStr length
+  const baseLength = Math.max(0, length - customStr.length);
+  let pwd = generatePassword(baseLength, upper, lower, numbers, symbols);
+  pwd = insertCustom(pwd, customStr, customPos);
+
+  document.getElementById('password').value = pwd;
+  document.getElementById('strength-text').textContent = evaluateStrength(pwd);
 });
 
 document.getElementById('copy').addEventListener('click', () => {
