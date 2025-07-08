@@ -12,7 +12,7 @@ body {
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  width: 320px;
+  width: 350px;
 }
 h1 {
   text-align: center;
@@ -21,6 +21,12 @@ h1 {
 .options label {
   display: block;
   margin: 8px 0;
+}
+.options input[type="text"],
+.options input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 4px;
 }
 .output {
   display: flex;
